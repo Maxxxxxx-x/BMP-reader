@@ -12,9 +12,9 @@ typedef struct {
 } BMPHeader;
 
 typedef struct {
-    uint8_t Size[4];
-    int8_t Width[4];
-    int8_t Height[4];
+    uint8_t HeaderSize[4];
+    uint8_t Height[4];
+    uint8_t Width[4];
     uint8_t Planes[2];
     uint8_t BitPerPixel[2];
     uint8_t Compression[4]; // 0 = BI_RGB, 1 = BI_RLE8, 2 = BI_RLE4
@@ -39,7 +39,7 @@ typedef struct {
 
 int readBMPImage(char *fileName, BMPImage *bmp);
 
-int8_t getImageHeight(BMPHeader header);
-int8_t getImageWidth(BMPHeader header);
+int32_t getBMPHeight(BMPInfoHeader *infoHeader);
+int32_t getBMPWidth(BMPInfoHeader *infoHeader);
 
 #endif
